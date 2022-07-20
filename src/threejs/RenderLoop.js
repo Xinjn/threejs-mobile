@@ -3,6 +3,8 @@
 import { scene } from "./scene/index.js"; //Three.js三维场景
 import { renderer, camera, labelRenderer } from "./RendererCamera.js"; //渲染器对象和相机对象
 import { model } from "./scene/model.js"; //手机模型
+// GUI
+import { guiControls } from "./gui.js";
 
 // 渲染
 function render() {
@@ -16,7 +18,12 @@ render();
 let rotateFrame = null;
 function rotateAnimation() {
   //设置产品模型旋转动画
-  model.rotateY(0.005); //手机绕y轴旋转
+  // model.rotateY(0.005); //手机绕y轴旋转
+
+  //三维场景绕y轴旋转
+  if (guiControls.旋转) {
+    scene.rotateY(0.005);
+  }
   rotateFrame = requestAnimationFrame(rotateAnimation); //请求再次执行函数rotateAnimation
 }
 rotateAnimation();
